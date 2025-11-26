@@ -3,7 +3,7 @@ name: Test EC2 SSH Connection
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the development branch
+      - development  # Trigger on pushes to the development branch
 
 jobs:
   test-ssh:
@@ -13,8 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Save SSH Key (Setup)
+      - name: Create .ssh directory and Save SSH Key (Setup)
         run: |
+          mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ls -l ~/.ssh
