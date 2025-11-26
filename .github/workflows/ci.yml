@@ -3,7 +3,7 @@ name: Test EC2 SSH Connection
 on:
   push:
     branches:
-      - development  # Trigger on pushes to the development branch
+      - main  # Trigger on pushes to the development branch
 
 jobs:
   test-ssh:
